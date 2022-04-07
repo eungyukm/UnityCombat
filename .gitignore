@@ -58,3 +58,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Ignore File
+Combat/Library
+Combat/Logs
+Combat/Temp
+Combat/UserSettings
+
