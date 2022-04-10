@@ -25,7 +25,7 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        characterController.Move(_moveDirection * _moveSpeed * Time.deltaTime);
+        //characterController.Move(_moveDirection * _moveSpeed * Time.deltaTime);
     }
 
     public void MoveTo(Vector3 direction)
