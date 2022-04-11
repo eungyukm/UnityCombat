@@ -9,9 +9,8 @@ public class Movement : MonoBehaviour
     public InputReader InputReader;
     public Transform _cameraTransform;
     
-    private float _inputX;
-
-    private float _inputZ;
+    public float _inputX;
+    public float _inputZ;
     
     private void OnEnable()
     {
@@ -26,6 +25,7 @@ public class Movement : MonoBehaviour
     public void MoveTo(Vector3 direction)
     {
         MoveDirecton = new Vector3(direction.x, 0, direction.z);
+        MoveDirecton.Normalize();
     }
 
     private void SetUPMovement(Vector2 move)
