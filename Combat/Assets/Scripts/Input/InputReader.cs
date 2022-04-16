@@ -12,6 +12,7 @@ public class InputReader : ScriptableObject, GameInput.IGamePlayActions
     public event UnityAction EnableMouseControlCameraEvent = delegate { };
     public event UnityAction DisableMouseControlCameraEvent = delegate { };
     public event UnityAction<Vector2> MoveEvent = delegate { };
+    public event UnityAction OnAttackEvent = delegate {  };
 
     private void OnEnable()
     {
@@ -41,9 +42,15 @@ public class InputReader : ScriptableObject, GameInput.IGamePlayActions
     public void OnMouseControlCamera(InputAction.CallbackContext context)
     {
         Debug.Log("Mouse Control Call!!");
-        if (context.phase == InputActionPhase.Performed) EnableMouseControlCameraEvent.Invoke();
+        if (context.phase == InputActionPhase.Performed)
+        {
+            EnableMouseControlCameraEvent.Invoke();
+        }
 
-        if (context.phase == InputActionPhase.Canceled) DisableMouseControlCameraEvent.Invoke();
+        if (context.phase == InputActionPhase.Canceled)
+        {
+            DisableMouseControlCameraEvent.Invoke();
+        }
     }
 
     public void OnRotateCamera(InputAction.CallbackContext context)
@@ -58,6 +65,14 @@ public class InputReader : ScriptableObject, GameInput.IGamePlayActions
         var moveVector = context.ReadValue<Vector2>();
         // Debug.Log("moveVector : " + moveVector);
         MoveEvent(moveVector);
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            OnAttackEvent.Invoke();
+        }
     }
 
     private bool IsDeviceMouse(InputAction.CallbackContext context)

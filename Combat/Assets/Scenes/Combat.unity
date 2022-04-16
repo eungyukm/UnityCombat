@@ -156,7 +156,7 @@ MonoBehaviour:
   mainCamera: {fileID: 1802204519}
   freeLookVCam: {fileID: 1344668417}
   _speedMultiplier: 1
-  target: {fileID: 0}
+  target: {fileID: 5083191140157400134}
 --- !u!4 &210026677
 Transform:
   m_ObjectHideFlags: 0
@@ -1282,6 +1282,10 @@ PrefabInstance:
       propertyPath: _cameraTransform
       value: 
       objectReference: {fileID: 1802204520}
+    - target: {fileID: 1324924825422529661, guid: a19b9b5676f08564fa5e844e9ed4d1cc, type: 3}
+      propertyPath: _attackReader
+      value: 
+      objectReference: {fileID: 5083191140157400135}
     - target: {fileID: 6890312744215557420, guid: a19b9b5676f08564fa5e844e9ed4d1cc, type: 3}
       propertyPath: m_Name
       value: unitychan
@@ -1342,6 +1346,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6890312744215557420, guid: a19b9b5676f08564fa5e844e9ed4d1cc, type: 3}
   m_PrefabInstance: {fileID: 1807158994170417516}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &5083191140157400134 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6890312744215980300, guid: a19b9b5676f08564fa5e844e9ed4d1cc, type: 3}
+  m_PrefabInstance: {fileID: 1807158994170417516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5083191140157400135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083191140157400128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e0db3f6fc0b4ccba69aecd9a39532e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputReader: {fileID: 11400000, guid: f50f9ad42356041a084615d0e1d25bce, type: 2}
 --- !u!114 &5083191140157400136
 MonoBehaviour:
   m_ObjectHideFlags: 0

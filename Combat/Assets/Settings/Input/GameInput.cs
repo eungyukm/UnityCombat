@@ -41,6 +41,14 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""d1f4abd6-179e-4b12-9c9c-9bb387e789bc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -120,6 +128,17 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a0b6653e-558b-4797-86c0-d7e87b2088f9"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -131,6 +150,7 @@ public class @GameInput : IInputActionCollection, IDisposable
         m_GamePlay_MouseControlCamera = m_GamePlay.FindAction("MouseControlCamera", throwIfNotFound: true);
         m_GamePlay_RotateCamera = m_GamePlay.FindAction("RotateCamera", throwIfNotFound: true);
         m_GamePlay_Move = m_GamePlay.FindAction("Move", throwIfNotFound: true);
+        m_GamePlay_Attack = m_GamePlay.FindAction("Attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +203,7 @@ public class @GameInput : IInputActionCollection, IDisposable
     private readonly InputAction m_GamePlay_MouseControlCamera;
     private readonly InputAction m_GamePlay_RotateCamera;
     private readonly InputAction m_GamePlay_Move;
+    private readonly InputAction m_GamePlay_Attack;
     public struct GamePlayActions
     {
         private @GameInput m_Wrapper;
@@ -190,6 +211,7 @@ public class @GameInput : IInputActionCollection, IDisposable
         public InputAction @MouseControlCamera => m_Wrapper.m_GamePlay_MouseControlCamera;
         public InputAction @RotateCamera => m_Wrapper.m_GamePlay_RotateCamera;
         public InputAction @Move => m_Wrapper.m_GamePlay_Move;
+        public InputAction @Attack => m_Wrapper.m_GamePlay_Attack;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -208,6 +230,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMove;
+                @Attack.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnAttack;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -221,6 +246,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
             }
         }
     }
@@ -230,5 +258,6 @@ public class @GameInput : IInputActionCollection, IDisposable
         void OnMouseControlCamera(InputAction.CallbackContext context);
         void OnRotateCamera(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
 }

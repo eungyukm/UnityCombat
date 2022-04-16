@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
@@ -16,5 +13,10 @@ public class PlayerAnimator : MonoBehaviour
     {
         _animator.SetFloat("horizontal", horizontal);
         _animator.SetFloat("vertical", vertical);
+    }
+
+    public void OnDefaultAttack()
+    {
+        _animator.SetTrigger("onWeaponAttack");
     }
 }
